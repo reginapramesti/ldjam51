@@ -171,6 +171,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ld51"
+run/main_scene="res://Sprite.tscn"
 config/icon="res://icon.png"
 
 [editor_plugins]
