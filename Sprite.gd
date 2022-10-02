@@ -20,3 +20,8 @@ func _physics_process(delta):
 		velocity.x = 0
 	
 	move_and_slide(velocity, Vector2(0, -1))
+
+
+
+func _on_Area2D_body_entered(body):
+	print("hi")
