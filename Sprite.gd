@@ -5,7 +5,7 @@ const WALK_SPEED = 200
 const ROTATION_SPEED = 600
 
 var velocity = Vector2()
-var rng = RandomNumberGenerator.new()
+onready var anim = $AnimationPlayer
 
 func _input(event):
 	if event.is_action_pressed("ui_up") and is_on_floor():
@@ -24,6 +24,8 @@ func _physics_process(delta):
 		velocity.x = 0
 	
 	move_and_slide(velocity, Vector2(0, -1))
+	
+	anim.play("clock_ticking")
 
 
 
