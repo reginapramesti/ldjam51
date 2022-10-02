@@ -159,7 +159,7 @@ position = Vector2( 396, 291 )
 space_override = 1
 gravity_point = true
 gravity_vec = Vector2( 0, 0 )
-gravity = 474.79
+gravity = 1000.0
 script = SubResource( 38 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gravity"]
