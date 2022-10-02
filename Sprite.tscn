@@ -72,6 +72,12 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 31, 31 )
 
+[sub_resource type="CircleShape2D" id=25]
+radius = 150.0
+
+[sub_resource type="CircleShape2D" id=40]
+radius = 26.0192
+
 [sub_resource type="Animation" id=41]
 resource_name = "clock_ticking"
 length = 4.0
@@ -88,12 +94,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
-
-[sub_resource type="CircleShape2D" id=25]
-radius = 150.0
-
-[sub_resource type="CircleShape2D" id=40]
-radius = 26.0192
 
 [sub_resource type="GDScript" id=38]
 script/source = "extends Area2D
@@ -126,10 +126,6 @@ texture = ExtResource( 2 )
 position = Vector2( 367, 211 )
 shape = SubResource( 7 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="KinematicBody2D"]
-root_node = NodePath("../..")
-anims/clock_ticking = SubResource( 41 )
-
 [node name="Circle" type="StaticBody2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Circle"]
@@ -153,6 +149,10 @@ vframes = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 position = Vector2( 0, 2 )
 shape = SubResource( 40 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RigidBody2D"]
+root_node = NodePath("../..")
+anims/clock_ticking = SubResource( 41 )
 
 [node name="Gravity" type="Area2D" parent="."]
 position = Vector2( 396, 291 )
