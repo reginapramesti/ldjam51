@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Sprite.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://tilesheet.png" type="Texture" id=3]
 [ext_resource path="res://clock_sprites_64x64.png" type="Texture" id=4]
+[ext_resource path="res://Sector.tscn" type="PackedScene" id=5]
 [ext_resource path="res://circle.png" type="Texture" id=9]
 [ext_resource path="res://RigidBody2D.gd" type="Script" id=10]
 
@@ -127,13 +128,12 @@ position = Vector2( 367, 211 )
 shape = SubResource( 7 )
 
 [node name="Circle" type="StaticBody2D" parent="."]
+position = Vector2( 395, 292 )
 
 [node name="Sprite" type="Sprite" parent="Circle"]
-position = Vector2( 397, 291 )
 texture = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Circle"]
-position = Vector2( 397, 291 )
 shape = SubResource( 25 )
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
@@ -165,6 +165,8 @@ script = SubResource( 38 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gravity"]
 position = Vector2( -2, 4 )
 shape = SubResource( 39 )
+
+[node name="Node2D" parent="Gravity" instance=ExtResource( 5 )]
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2( 615, 194 )
