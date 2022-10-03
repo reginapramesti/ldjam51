@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tilesheet.png-55e778059ad55a1a47c5237b5db55343.stex"
+path="res://.import/clock_sprites_64x64.png-56705330977fc5455c739d74cb8ba8b5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilesheet.png"
-dest_files=[ "res://.import/tilesheet.png-55e778059ad55a1a47c5237b5db55343.stex" ]
+source_file="res://images/clock_sprites_64x64.png"
+dest_files=[ "res://.import/clock_sprites_64x64.png-56705330977fc5455c739d74cb8ba8b5.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
