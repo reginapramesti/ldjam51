@@ -16,7 +16,6 @@ func _ready():
 	timer.connect("timeout", self, "update_angle")
 	timer.wait_time = wait_time
 	timer.start()
-	print(timer)
 	
 func draw_circle_arc_poly(center, radius, angle_from, angle_to, color):
 	var nb_points = 32

@@ -26,14 +26,11 @@ func _integrate_forces(state):
 				apply_central_impulse(jump * up)
 
 func _on_SectorArea_body_exited(body):
-	print('leaving cone')
 	modulate = Color(0.5, 0.5, 0.5)
 	sleeping = true
 	in_cone = false
 	
 func _on_SectorArea_body_entered(body):
-	print('entering cone')
-	sleeping = false
 	modulate = Color("#fff")
 	apply_central_impulse(Vector2(0.01, 0.01))
 	in_cone = true

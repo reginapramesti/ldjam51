@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="ld51"
-run/main_scene="res://scenes/Sprite.tscn"
+run/main_scene="res://scenes/CoreScene.tscn"
 config/icon="res://images/icon.png"
 
 [gui]
