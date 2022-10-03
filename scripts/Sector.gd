@@ -1,19 +1,20 @@
 extends Node2D
 
-var rotation_angle = 60
+var rotation_angle = 6
 var angle_from = 0
 var angle_to = 60
 onready var timer = $Timer
+const wait_time = 1
 
 func _draw():
 	var center = Vector2(0, 0)
-	var radius = 150
-	var color = Color(0.0, 1.0, 0.0)
+	var radius = 1200
+	var color = Color(0.0, 1.0, 0.0, 0.3)
 	draw_circle_arc_poly(center, radius, angle_from, angle_to, color)
 	
 func _ready():
 	timer.connect("timeout", self, "update_angle")
-	timer.wait_time = 2
+	timer.wait_time = wait_time
 	timer.start()
 	print(timer)
 	
