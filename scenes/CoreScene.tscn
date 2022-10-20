@@ -1,13 +1,21 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://images/clock_sprites_64x64.png" type="Texture" id=1]
 [ext_resource path="res://images/tilesheet.png" type="Texture" id=2]
 [ext_resource path="res://images/icon.png" type="Texture" id=3]
 [ext_resource path="res://images/circle.png" type="Texture" id=4]
 [ext_resource path="res://scripts/RigidBodySprite.gd" type="Script" id=5]
-[ext_resource path="res://scripts/KinematicBodySprite.gd" type="Script" id=6]
 [ext_resource path="res://scripts/SectorArea.gd" type="Script" id=7]
 [ext_resource path="res://scripts/Sector.gd" type="Script" id=8]
+[ext_resource path="res://images/platform.png" type="Texture" id=9]
+[ext_resource path="res://addons/rmsmartshape/materials/edge_material_metadata.gd" type="Script" id=10]
+[ext_resource path="res://addons/rmsmartshape/materials/edge_material.gd" type="Script" id=11]
+[ext_resource path="res://addons/rmsmartshape/normal_range.gd" type="Script" id=12]
+[ext_resource path="res://addons/rmsmartshape/materials/shape_material.gd" type="Script" id=13]
+[ext_resource path="res://addons/rmsmartshape/shapes/point.gd" type="Script" id=14]
+[ext_resource path="res://addons/rmsmartshape/vertex_properties.gd" type="Script" id=15]
+[ext_resource path="res://addons/rmsmartshape/shapes/point_array.gd" type="Script" id=16]
+[ext_resource path="res://addons/rmsmartshape/shapes/shape_open.gd" type="Script" id=17]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 32, 32, 0, 32, 0, 32, 32, 32 )
@@ -109,6 +117,98 @@ radius = 888.946
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 27, 28 )
 
+[sub_resource type="Resource" id=53]
+script = ExtResource( 15 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=54]
+script = ExtResource( 14 )
+position = Vector2( 537.464, 71.2053 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 53 )
+
+[sub_resource type="Resource" id=55]
+script = ExtResource( 15 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=56]
+script = ExtResource( 14 )
+position = Vector2( 611.092, 83.3549 )
+point_in = Vector2( -28.8099, -21.0139 )
+point_out = Vector2( 31.3297, 21.0139 )
+properties = SubResource( 55 )
+
+[sub_resource type="Resource" id=57]
+script = ExtResource( 15 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=58]
+script = ExtResource( 14 )
+position = Vector2( 640.129, 161.997 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 57 )
+
+[sub_resource type="Resource" id=59]
+script = ExtResource( 16 )
+_points = {
+0: SubResource( 54 ),
+1: SubResource( 56 ),
+2: SubResource( 58 )
+}
+_point_order = [ 0, 1, 2 ]
+_constraints = {
+}
+_next_key = 4
+
+[sub_resource type="Resource" id=49]
+script = ExtResource( 11 )
+textures = [ ExtResource( 9 ) ]
+texture_normals = [  ]
+textures_corner_outer = [  ]
+textures_corner_inner = [  ]
+texture_normals_corner_outer = [  ]
+texture_normals_corner_inner = [  ]
+textures_taper_left = [  ]
+textures_taper_right = [  ]
+texture_normals_taper_left = [  ]
+texture_normals_taper_right = [  ]
+use_corner_texture = true
+use_taper_texture = true
+fit_mode = 0
+
+[sub_resource type="Resource" id=50]
+script = ExtResource( 12 )
+begin = 0.0
+distance = 0.0
+edgeRendering = Vector2( 0, 0 )
+
+[sub_resource type="Resource" id=51]
+script = ExtResource( 10 )
+edge_material = SubResource( 49 )
+normal_range = SubResource( 50 )
+weld = true
+render = true
+z_index = 0
+z_as_relative = true
+offset = 0.0
+
+[sub_resource type="Resource" id=52]
+script = ExtResource( 13 )
+_edge_meta_materials = [ SubResource( 51 ) ]
+fill_textures = [  ]
+fill_texture_normals = [  ]
+fill_texture_z_index = -10
+fill_mesh_offset = 0.0
+render_offset = 0.0
+
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -118,7 +218,6 @@ format = 1
 
 [node name="OldKinematicBody" type="KinematicBody2D" parent="."]
 position = Vector2( 390, 566 )
-script = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="OldKinematicBody"]
 texture = ExtResource( 3 )
@@ -162,11 +261,11 @@ gravity = 1000.0
 script = SubResource( 38 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gravity"]
-position = Vector2( -2, 4 )
+position = Vector2( -1, 4 )
 shape = SubResource( 39 )
 
 [node name="Objective" type="Area2D" parent="."]
-position = Vector2( 615, 194 )
+position = Vector2( 263, 35 )
 
 [node name="Sprite" type="Sprite" parent="Objective"]
 position = Vector2( 1, 2 )
@@ -190,6 +289,27 @@ position = Vector2( 396, 291 )
 script = ExtResource( 8 )
 
 [node name="Timer" type="Timer" parent="SectorDrawing"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="SS2D_Shape_Open" type="Node2D" parent="StaticBody2D"]
+position = Vector2( -27, 52 )
+script = ExtResource( 17 )
+_points = SubResource( 59 )
+material_overrides = {
+}
+shape_material = SubResource( 52 )
+tessellation_stages = 5
+tessellation_tolerence = 4.0
+flip_edges = false
+render_edges = true
+collision_size = 16.0
+collision_offset = 0.0
+collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+modulate = Color( 1, 1, 1, 0.3 )
+polygon = PoolVector2Array( 510.464, 123.205, 517.916, 122.139, 536.474, 121.387, 548.136, 122.264, 560.436, 124.581, 566.601, 126.424, 572.66, 128.791, 578.523, 131.746, 584.094, 135.352, 586.935, 137.425, 589.589, 139.693, 594.348, 144.757, 598.416, 150.409, 601.854, 156.504, 604.715, 162.904, 607.056, 169.47, 610.368, 182.554, 612.208, 194.654, 613.002, 204.664, 613.129, 213.997, 597.131, 214.222, 597.02, 205.41, 596.314, 196.494, 594.686, 185.726, 591.747, 174.122, 589.865, 168.86, 587.57, 163.713, 584.94, 159.034, 581.998, 154.93, 578.531, 151.257, 577.001, 149.967, 575.032, 148.538, 570.57, 145.629, 566.137, 143.401, 561.396, 141.554, 556.664, 140.13, 546.054, 138.128, 536.197, 137.384, 519.363, 138.073, 512.71, 139.047 )
 
 [connection signal="body_entered" from="Objective" to="OldKinematicBody" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="SectorAreaDetection" to="ClockSprite" method="_on_SectorArea_body_entered"]
