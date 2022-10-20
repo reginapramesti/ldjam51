@@ -176,7 +176,7 @@ config/icon="res://images/icon.png"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/rmsmartshape/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [gui]
 
